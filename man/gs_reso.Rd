@@ -21,7 +21,7 @@ gs_reso(id='4efd83a6f5a1f5158a000004')
 
 # ropensci data
 ro_id <- gs_list(keyname='ropensciGaugesKey')$gauges[[6]]$id # ropensci is gauge number 6
-gs_reso(id=ro_id, keyname='ropensciGaugesKey') # ropensci locations
+gs_reso(id=ro_id, keyname='ropensciGaugesKey')
 }
 }
 
