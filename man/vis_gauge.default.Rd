@@ -17,6 +17,10 @@ out <- gs_gauge_detail(id='500ebcf4613f5d79c700001c', keyname='ropensciGaugesKey
 
 # visualize
 vis_gauge(x=out)
+
+# scotts data
+out <- gs_gauge_detail(id='4efd83a6f5a1f5158a000004')
+vis_gauge(out)
 }
 }
 

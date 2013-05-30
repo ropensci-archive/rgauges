@@ -6,7 +6,7 @@ vis_gauge <- function(input, ...) UseMethod("vis_gauge")
 
 #' Visualize gauge analytics.
 #' 
-#' @import ggplot2 reshape2 grid gridExtra
+#' @import ggplot2 reshape2 gridExtra
 #' @S3method vis_gauge default
 #' @param x gauge S3 object
 #' @examples \dontrun{
@@ -15,6 +15,10 @@ vis_gauge <- function(input, ...) UseMethod("vis_gauge")
 #' 
 #' # visualize
 #' vis_gauge(x=out)
+#' 
+#' # scotts data
+#' out <- gs_gauge_detail(id='4efd83a6f5a1f5158a000004')
+#' vis_gauge(out)
 #' }
 vis_gauge.default <- function(x)
 {
@@ -52,7 +56,7 @@ vis_gauge.default <- function(x)
   c <- ggplot(by_month, aes(date, value, group=variable, colour=variable)) +
     theme_bw(base_size=18) + 
     geom_line(size=2) +
-    scale_color_brewer(name="", palette=4) +
+    scale_color_brewer(name="", palette=7) +
     labs(x="Last 12 Months", y="") +
     gauge_theme()
   
