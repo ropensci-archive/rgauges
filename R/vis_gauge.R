@@ -25,7 +25,30 @@ vis_gauge.default <- function(x)
   if(!is.gauge(x))
     stop("Input is not of class gauge")
   
-  by_hour <- melt(x$recent_hours)
+  yesterday_ <- x$recent_hours[as.character(as.numeric(row.names(x$recent_hours[x$recent_hours$hour == "00", ]))+1):nrow(x$recent_hours),]
+  today_ <- x$recent_hours[1:row.names(x$recent_hours[x$recent_hours$hour == "00", ]),]
+  makeposixtime <- function(y, yest=FALSE){  
+    if(yest){ nn <- today()-1 } else
+      { nn <- today() }
+    num <- as.numeric(as.character(y))
+    if(num == 0){
+      nn <- 
+        as.POSIXct(paste(nn,"00:00:01"), format='%Y-%m-%d %H:%M:%S')
+    } else
+    {
+      hour(nn) <- num      
+    }
+    return( nn )
+  }
+  
+  alltimes <- c(lapply(today_$hour, makeposixtime),
+    lapply(yesterday_$hour, makeposixtime, yest=TRUE))
+  alltimes_df <- cbind(x$recent_hours, time=t(data.frame(alltimes)))
+  row.names(alltimes_df) <- NULL
+
+  by_hour <- melt(alltimes_df[,-1])
+  by_hour$time <- as.POSIXct(by_hour$time, format= '%Y-%m-%d %H:%M:%S')
+  
   by_day <- melt(x$recent_days)
   by_day$date <- as.Date(by_day$date)
   by_month <- melt(x$recent_months)
@@ -39,10 +62,11 @@ vis_gauge.default <- function(x)
          guides(col = guide_legend(nrow=1)))
   }
   
-  a <- ggplot(by_hour, aes(hour, value, group=variable, colour=variable)) +
+  a <- ggplot(by_hour, aes(time, value, group=variable, colour=variable)) +
     theme_bw(base_size=18) + 
     geom_line(size=2) +
     scale_color_brewer(name="", palette=2) +
+    scale_x_datetime(breaks = date_breaks("3 hour"), labels = date_format('%H')) +
     labs(x="Last 24 Hours", y="") +
     gauge_theme()
   
