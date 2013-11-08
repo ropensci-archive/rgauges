@@ -92,4 +92,5 @@ $screen_width
 8   480     0
 ```
 
-##### rgauges is part of the rOpenSci project.
+
+[![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
