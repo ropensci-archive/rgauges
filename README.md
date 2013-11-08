@@ -1,6 +1,8 @@
 rgauges
 =======
 
+[![Build Status](https://api.travis-ci.org/ropensci/rgauges.png)](https://travis-ci.org/ropensci/rgauges)
+
 `rgauges` is an R wrapper to the gaug.es API for website analytics.
 
 #### docs
