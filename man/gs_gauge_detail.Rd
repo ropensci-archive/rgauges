@@ -18,8 +18,10 @@
 }
 \examples{
 \dontrun{
-gs_gauge_create() # create a dummy gauge
-gs_gauge_detail(id='4efd83a6f5a1f5158a000004') # and get detail on it
+# create a dummy gauge
+out <- gs_gauge_create()
+# and get detail on it
+gs_gauge_detail(out$id)
 }
 }
 

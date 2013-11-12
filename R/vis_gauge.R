@@ -1,14 +1,10 @@
 #' Plot a class of gauge
-#' @param input Input data.frame
-#' @param ... Additional parameters passed on to vis_gauge.default
-#' @export
-vis_gauge <- function(input, ...) UseMethod("vis_gauge")
-
-#' Visualize gauge analytics.
 #' 
-#' @import ggplot2 reshape2 gridExtra
-#' @S3method vis_gauge default
-#' @param x gauge S3 object
+#' @import gridExtra reshape2 scales ggplot2
+#' @importFrom lubridate today hour<-
+#' @param x Input, see examples
+#' @param ... Additional parameters passed on to vis_gauge.default, not currenlty used
+#' @export
 #' @examples \dontrun{
 #' # get detail on the ropensci gauge
 #' out <- gs_gauge_detail(id='500ebcf4613f5d79c700001c', keyname='ropensciGaugesKey')
@@ -20,7 +16,12 @@ vis_gauge <- function(input, ...) UseMethod("vis_gauge")
 #' out <- gs_gauge_detail(id='4efd83a6f5a1f5158a000004')
 #' vis_gauge(out)
 #' }
-vis_gauge.default <- function(x)
+vis_gauge <- function(...) UseMethod("vis_gauge")
+
+#' @method vis_gauge default
+#' @export
+#' @rdname vis_gauge
+vis_gauge.default <- function(x, ...)
 {
   if(!is.gauge(x))
     stop("Input is not of class gauge")

@@ -21,10 +21,11 @@
 \dontrun{
 # scotts data
 gs_content(id='4efd83a6f5a1f5158a000004')
+gs_content(id='4efd83a6f5a1f5158a000004', date="2013-11-01")
 
 # ropensci data
-ro_id <- gs_list(keyname='ropensciGaugesKey')$gauges[[6]]$id # ropensci is gauge number 6
-gs_content(id=ro_id, keyname='ropensciGaugesKey')
+out <- gs_gauge_list(keyname='ropensciGaugesKey')
+gs_content(id=out$brief[6,1], keyname='ropensciGaugesKey')
 }
 }
 

@@ -1,6 +1,6 @@
 \name{gs_ref}
 \alias{gs_ref}
-\title{Information on referrers}
+\title{Gets referrers for a gauge, paginated.}
 \usage{
   gs_ref(id, date = NULL, page = NULL,
     keyname = "GaugesKey")
@@ -15,7 +15,7 @@
   \item{keyname}{Your API key name in your .Rprofile file}
 }
 \description{
-  Information on referrers
+  Gets referrers for a gauge, paginated.
 }
 \examples{
 \dontrun{
@@ -23,8 +23,8 @@
 gs_ref(id='4efd83a6f5a1f5158a000004')
 
 # ropensci data
-ro_id <- gs_list(keyname='ropensciGaugesKey')$gauges[[6]]$id # ropensci is gauge number 6
-gs_ref(id=ro_id, keyname='ropensciGaugesKey') # ropensci referrers
+out <- gs_gauge_list(keyname='ropensciGaugesKey')
+gs_ref(id=out$brief[6,1], keyname='ropensciGaugesKey') # ropensci referrers
 }
 }
 

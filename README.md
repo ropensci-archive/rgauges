@@ -7,7 +7,7 @@ rgauges
 
 #### docs
 
-See the Gaug.es API documentation here: http://get.gaug.es/documentation/
+See the Gaug.es API documentation here [http://get.gaug.es/documentation/](http://get.gaug.es/documentation/)
 
 #### Auth
 
@@ -17,7 +17,7 @@ Get your own API in your Gaug.es 'My Account' page and put in your .Rprofile fil
 
 ##### your info
 
-```ruby
+```coffee
 gs_me()
 
 $user
@@ -28,9 +28,11 @@ $user$name
 
 ##### traffic
 
-```ruby
+```coffee
 gs_traffic(id='4efd83a6f5a1f5158a000004')
+```
 
+```coffee
    views       date people
 1      0 2013-05-01      0
 2      0 2013-05-02      0
@@ -60,9 +62,11 @@ gs_traffic(id='4efd83a6f5a1f5158a000004')
 
 ##### Screen/browser information
 
-```ruby
+```coffee
 gs_reso(id='4efd83a6f5a1f5158a000004')
+```
 
+```coffee
 $browser_height
   title views
 1   600     9

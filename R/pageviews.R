@@ -1,30 +1,42 @@
 #' Gets top content for a gauge, paginated.
 #' 
-#' @import httr lubridate
-#' @inheritParams gs_ref
+#' @import httr data.table
+#' @importFrom lubridate today
+#' @param id Your gaug.es id
 #' @param fromdate Date to get data from. Defaults to today.
 #' @param todate Date to get data to. Defaults to today.
+#' @param page page to return
+#' @param keyname Your API key name in your .Rprofile file
 #' @examples \dontrun{
 #' # scotts data
-#' gs_pageviews(id='4efd83a6f5a1f5158a000004')
+#' gs_pageviews(id='4efd83a6f5a1f5158a000004', fromdate="2013-11-01", todate="2013-11-06")
 #' 
 #' # ropensci data
-#' ro_id <- gs_list(keyname='ropensciGaugesKey')$gauges[[6]]$id # ropensci is gauge number 6
-#' gs_pageviews(id=ro_id, keyname='ropensciGaugesKey')
+#' out <- gs_gauge_list(keyname='ropensciGaugesKey')
+#' gs_pageviews(id=out$brief[6,1], keyname='ropensciGaugesKey')
 #' }
 #' @export
-gs_pageviews <- function(id, fromdate = 'today', todate = 'today', keyname='GaugesKey')
+gs_pageviews <- function(id, fromdate = NULL, todate = NULL, page=NULL,
+                         keyname='GaugesKey')
 {
-  datestoget <- c(today()-1, today())
+  # assign today's date if no date specified
+  if(is.null(fromdate))
+    fromdate <- today()
+  if(is.null(todate))
+    todate <- today()
+  
+  # coerce to dates
+  fromdate <- as.Date(fromdate)
+  todate <- as.Date(todate)
+  datestoget <- as.character(seq.Date(fromdate, todate, by="day"))
   
   getcontents <- function(x){  
-    key <- getOption(keyname)
-    url <- paste0('https://secure.gaug.es/gauges/', id, '/content')
-    args <- compact(list(date=x))
-    out <- content( GET(url=url, query=args, config=list(httpheader=paste0('X-Gauges-Token:',key))) )
-    temp <- ldply(out$content, function(x) as.data.frame(x))
-    return( temp )
+    temp <- gs_content(id=id, date=x, page=page, keyname=keyname)$data
+    data.frame(date=x, temp[,c('title','views')])
   }
   
-  llply(datestoget, getcontents)
+  out <- lapply(datestoget, getcontents)
+  out <- do.call(rbind.fill, out)
+  dt <- data.table(out)
+  data.frame(dt[, sum(views), by=title])
 }

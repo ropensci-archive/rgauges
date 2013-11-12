@@ -23,8 +23,8 @@
 gs_terms(id='4efd83a6f5a1f5158a000004')
 
 # ropensci data
-ro_id <- gs_list(keyname='ropensciGaugesKey')$gauges[[6]]$id # ropensci is gauge number 6
-gs_terms(id=ro_id, keyname='ropensciGaugesKey')
+out <- gs_gauge_list(keyname='ropensciGaugesKey')
+gs_terms(id=out$brief[6,1], keyname='ropensciGaugesKey')
 }
 }
 

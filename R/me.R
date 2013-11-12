@@ -11,15 +11,16 @@
 #' @export
 gs_me <- function(keyname='GaugesKey')
 {
-  key <- getOption(keyname)
+  key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- 'https://secure.gaug.es/me'
-  #   args <- compact(list())
-  content( GET(url=url, config=list(httpheader=paste0('X-Gauges-Token:',key))) )
+  tt <- GET(url=url, config=list(httpheader=paste0('X-Gauges-Token:',key)))
+  stop_for_status(tt)
+  content(tt)
 }
 
 #' Updates and returns your information with the updates applied.
 #' @export
-gs_update_me <- function()
+gs_me_update <- function()
 {
-  message("Hmm, not sure if it's worth implementing this yet...")
+  message("Hmm, not sure if it's worth implementing this yet...let me know if you want it")
 }

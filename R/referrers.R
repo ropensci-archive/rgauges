@@ -1,6 +1,7 @@
-#' Information on referrers
+#' Gets referrers for a gauge, paginated.
 #' 
 #' @import httr
+#' @importFrom plyr compact rbind.fill
 #' @param id Your gaug.es id
 #' @param date Date format YYYY-MM-DD.
 #' @param page page to return
@@ -10,14 +11,19 @@
 #' gs_ref(id='4efd83a6f5a1f5158a000004')
 #' 
 #' # ropensci data
-#' ro_id <- gs_list(keyname='ropensciGaugesKey')$gauges[[6]]$id # ropensci is gauge number 6
-#' gs_ref(id=ro_id, keyname='ropensciGaugesKey') # ropensci referrers
+#' out <- gs_gauge_list(keyname='ropensciGaugesKey')
+#' gs_ref(id=out$brief[6,1], keyname='ropensciGaugesKey') # ropensci referrers
 #' }
 #' @export
 gs_ref <- function(id, date=NULL, page=NULL, keyname='GaugesKey')
 {
-  key <- getOption(keyname)
-  url <- paste0('https://secure.gaug.es/gauges/', id, '/referrers')
+  key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
+  url <- sprintf('https://secure.gaug.es/gauges/%s/referrers', id)
   args <- compact(list(date=date, page=page))
-  content( GET(url=url, query=args, config=list(httpheader=paste0('X-Gauges-Token:',key))) )
+  tt <- GET(url, query=args, config=list(httpheader=paste0('X-Gauges-Token:',key)))
+  stop_for_status(tt)
+  out <- content(tt)
+  dat <- do.call(rbind.fill, lapply(out$referrers, function(x) data.frame(x,stringsAsFactors=FALSE)))
+  meta <- out[!names(out) %in% "referrers"]
+  return( list(metadata = meta, data=dat) )
 }

@@ -2,11 +2,14 @@
 \alias{gs_gauge_update}
 \title{Updates and returns a gauge with the updates applied.}
 \usage{
-  gs_gauge_update(title = "foo_bar",
-    tz = "Eastern Time (US & Canada)",
-    allowed_hosts = NULL, keyname = "GaugesKey")
+  gs_gauge_update(id = NULL,
+    tz = "Eastern Time (US & Canada)", title = "foo_bar",
+    allowed_hosts = NULL, keyname = "GaugesKey",
+    verbose = TRUE)
 }
 \arguments{
+  \item{id}{Id of the gauge}
+
   \item{title}{Title of the gauge.}
 
   \item{tz}{The time zone that should be used for all
@@ -18,6 +21,11 @@
   domains to accept tracking data from.}
 
   \item{keyname}{Your API key name in your .Rprofile file}
+
+  \item{verbose}{Print http status (default) or not}
+}
+\value{
+  Gives HTTP status and metadata for the new gauge.
 }
 \description{
   Updates and returns a gauge with the updates applied.
@@ -28,7 +36,8 @@
 }
 \examples{
 \dontrun{
-gs_gauge_update(id='51a54191613f5d1a4b0000a7', title='foo_bar')
+out <- gs_gauge_create(title='foo_bar')
+gs_gauge_update(id=out$id, tz=out$tz, title='dumb')
 }
 }
 

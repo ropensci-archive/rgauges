@@ -5,3 +5,5 @@ man-roxygen
 ^.*\.Rproj$
 ^\.Rproj\.user$
 CONTRIBUTING.md
+inst/ignore
+tests

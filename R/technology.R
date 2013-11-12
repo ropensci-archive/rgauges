@@ -1,6 +1,7 @@
 #' Gets browsers and platforms for a gauge.
 #' 
 #' @import httr
+#' @importFrom plyr compact rbind.fill
 #' @inheritParams gs_traffic
 #' @return list of two, browsers and platforms
 #' @examples \dontrun{
@@ -8,25 +9,28 @@
 #' gs_tech(id='4efd83a6f5a1f5158a000004')
 #' 
 #' # ropensci data
-#' ro_id <- gs_list(keyname='ropensciGaugesKey')$gauges[[6]]$id # ropensci is gauge number 6
-#' gs_tech(id=ro_id, keyname='ropensciGaugesKey')
+#' out <- gs_gauge_list(keyname='ropensciGaugesKey')
+#' gs_tech(id=out$brief[6,1], keyname='ropensciGaugesKey')
 #' }
 #' @export
 gs_tech <- function(id, date=NULL, keyname='GaugesKey')
 {
-  key <- getOption(keyname)
-  url <- paste0('https://secure.gaug.es/gauges/', id, '/technology')
+  key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
+  url <- sprintf('https://secure.gaug.es/gauges/%s/technology', id)
   args <- compact(list(date=date))
-  out <- content( GET(url=url, query=args, config=list(httpheader=paste0('X-Gauges-Token:',key))) )
+  tt <- GET(url, query=args, config=list(httpheader=paste0('X-Gauges-Token:',key)))
+  stop_for_status(tt)
+  out <- content(tt)
   brows <- 
-    ldply(out$browsers, function(x) if(length(x$versions)==0){
+    do.call(rbind.fill,
+    lapply(out$browsers, function(x) if(length(x$versions)==0){
       data.frame(browser=x$title, version="NA", views=x$views)
     } else
     {
-      thing <- data.frame(x$title, ldply(x$versions, function(y) as.data.frame(y))) 
+      thing <- data.frame(x$title, do.call(rbind.fill, lapply(x$versions, function(y) data.frame(y,stringsAsFactors=FALSE)))) 
       names(thing) <- c("browser","version","views")
       thing
-    })
-  plats <- ldply(out$platforms, function(x) as.data.frame(x))
+    }))
+  plats <- do.call(rbind.fill, lapply(out$platforms, function(x) data.frame(x,stringsAsFactors=FALSE)))
   return( list(browsers = brows, platforms = plats) )
 }

@@ -14,8 +14,10 @@
 }
 \examples{
 \dontrun{
-gs_gauge_create() # create a dummy gauge
-gs_gauge_delete(id='51a54285f5a1f553cf000004') # and delete it
+# create a dummy gauge
+out <- gs_gauge_create()
+# and delete it
+gs_gauge_delete(out$id)
 }
 }
 

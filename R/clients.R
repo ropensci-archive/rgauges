@@ -12,8 +12,10 @@
 #' @export
 gs_clients <- function(keyname='GaugesKey')
 {
-  key <- getOption(keyname)
+  key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- 'https://secure.gaug.es/clients'
-  out <- content( GET(url=url, config=list(httpheader=paste0('X-Gauges-Token:',key))) )
+  tt <- GET(url, config=list(httpheader=paste0('X-Gauges-Token:',key)))
+  stop_for_status(tt)
+  out <- content(tt)
   return( out )
 }
