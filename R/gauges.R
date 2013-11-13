@@ -1,11 +1,11 @@
 #' List your gaug.es
 #' 
 #' @import httr
+#' @template all
 #' @importFrom plyr rbind.fill
 #' @param page Page to return.
 #' @param keyname Your API key name in your .Rprofile file
 #' @examples \dontrun{
-#' # scotts data
 #' gs_gauge_list()
 #' }
 #' @export
@@ -23,11 +23,13 @@ gs_gauge_list <- function(keyname='GaugesKey', page=NULL)
 
 #' Permanently deletes a gauge.
 #' 
+#' @template all
 #' @param id id of the gauge
 #' @param keyname Your API key name in your .Rprofile file
 #' @examples \dontrun{
 #' # create a dummy gauge
 #' out <- gs_gauge_create()
+#' 
 #' # and delete it
 #' gs_gauge_delete(out$id)
 #' }
@@ -40,12 +42,14 @@ gs_gauge_delete <-  function(id, keyname='GaugesKey'){
 
 #' Gets details for a gauge.
 #' 
+#' @template all
 #' @param id id of the gauge
 #' @param keyname Your API key name in your .Rprofile file
 #' @details Gets details on a gauge, by specifying the id of the gauge. 
 #' @examples \dontrun{
 #' # create a dummy gauge
 #' out <- gs_gauge_create() 
+#' 
 #' # and get detail on it
 #' gs_gauge_detail(out$id)
 #' }
@@ -86,6 +90,7 @@ parse_gauge_detail <- function(out)
 
 #' Creates a new gauge.
 #' 
+#' @template all
 #' @param title Title of the gauge. 
 #' @param tz The time zone that should be used for all date/time operations. See here 
 #'    \url{http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html} for reference. 
@@ -116,6 +121,7 @@ gs_gauge_create <- function(title = 'hello_world2', tz = 'Eastern Time (US & Can
 
 #' Updates and returns a gauge with the updates applied.
 #' 
+#' @template all
 #' @param id Id of the gauge
 #' @param title Title of the gauge. 
 #' @param tz The time zone that should be used for all date/time operations. See here 

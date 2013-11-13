@@ -1,6 +1,8 @@
 Package: rgauges
-Description: R wrapper to gaug.es API
-Title: R wrapper to gaug.es API
+Title: R wrapper to Gaug.es API
+Description: This package provides functions to interact with the
+    Gaug.es API. Gaug.es is a web analytics service, like Google
+    analytics. You have to have a Gaug.es account to use this package.
 Version: 0.1.5
 Date: 2013-11-12
 License: CC0

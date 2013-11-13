@@ -1,5 +1,6 @@
 #' Gets referrers for a gauge, paginated.
 #' 
+#' @template all
 #' @import httr
 #' @importFrom plyr compact rbind.fill
 #' @param id Your gaug.es id
@@ -7,12 +8,11 @@
 #' @param page page to return
 #' @param keyname Your API key name in your .Rprofile file
 #' @examples \dontrun{
-#' # scotts data
 #' gs_ref(id='4efd83a6f5a1f5158a000004')
 #' 
-#' # ropensci data
-#' out <- gs_gauge_list(keyname='ropensciGaugesKey')
-#' gs_ref(id=out$brief[6,1], keyname='ropensciGaugesKey') # ropensci referrers
+#' # Get list of gauge's, then pass in one of the ids
+#' out <- gs_gauge_list()
+#' gs_ref(id=out$brief[6,1])
 #' }
 #' @export
 gs_ref <- function(id, date=NULL, page=NULL, keyname='GaugesKey')

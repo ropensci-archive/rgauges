@@ -1,12 +1,9 @@
 #' Information on yourself.
 #' 
+#' @template all
 #' @param keyname Your API key name in your .Rprofile file
 #' @examples \dontrun{
-#' # scotts data
 #' gs_me()
-#' 
-#' # ropensci data
-#' gs_me("ropensciGaugesKey")
 #' }
 #' @export
 gs_me <- function(keyname='GaugesKey')

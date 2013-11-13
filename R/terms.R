@@ -1,15 +1,15 @@
 #' Gets search terms for a gauge, paginated.
 #' 
+#' @template all
 #' @import httr
 #' @importFrom plyr compact rbind.fill
 #' @inheritParams gs_ref
 #' @examples \dontrun{
-#' # scotts data
 #' gs_terms(id='4efd83a6f5a1f5158a000004')
 #' 
-#' # ropensci data
-#' out <- gs_gauge_list(keyname='ropensciGaugesKey')
-#' gs_terms(id=out$brief[6,1], keyname='ropensciGaugesKey')
+#' # Get list of gauge's, then pass in one of the ids
+#' out <- gs_gauge_list()
+#' gs_terms(id=out$brief[6,1])
 #' }
 #' @export
 gs_terms <- function(id, date=NULL, page=NULL, keyname='GaugesKey')

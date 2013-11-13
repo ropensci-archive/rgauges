@@ -1,5 +1,6 @@
 #' Gets top content for a gauge, paginated.
 #' 
+#' @template all
 #' @import httr data.table
 #' @importFrom lubridate today
 #' @param id Your gaug.es id
@@ -8,12 +9,7 @@
 #' @param page page to return
 #' @param keyname Your API key name in your .Rprofile file
 #' @examples \dontrun{
-#' # scotts data
 #' gs_pageviews(id='4efd83a6f5a1f5158a000004', fromdate="2013-11-01", todate="2013-11-06")
-#' 
-#' # ropensci data
-#' out <- gs_gauge_list(keyname='ropensciGaugesKey')
-#' gs_pageviews(id=out$brief[6,1], keyname='ropensciGaugesKey')
 #' }
 #' @export
 gs_pageviews <- function(id, fromdate = NULL, todate = NULL, page=NULL,

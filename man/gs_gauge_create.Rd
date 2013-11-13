@@ -32,6 +32,12 @@
   Note that you can create gaguges with the same names,
   beware.
 }
+\note{
+  Note that these examples only work if you provide your
+  Gaug.es API key either by passing in the function, or
+  storing your key in your .Rprofile file, defaults to
+  looking for an entry of "GaugesKey".
+}
 \examples{
 \dontrun{
 gs_gauge_create() # create a gauge with defaults, your gauge will be called hello_world

@@ -1,16 +1,16 @@
 #' Gets browsers and platforms for a gauge.
 #' 
+#' @template all
 #' @import httr
 #' @importFrom plyr compact rbind.fill
 #' @inheritParams gs_traffic
 #' @return list of two, browsers and platforms
 #' @examples \dontrun{
-#' # scotts data
 #' gs_tech(id='4efd83a6f5a1f5158a000004')
 #' 
-#' # ropensci data
-#' out <- gs_gauge_list(keyname='ropensciGaugesKey')
-#' gs_tech(id=out$brief[6,1], keyname='ropensciGaugesKey')
+#' # Get list of gauge's, then pass in one of the ids
+#' out <- gs_gauge_list()
+#' gs_tech(id=out$brief[6,1])
 #' }
 #' @export
 gs_tech <- function(id, date=NULL, keyname='GaugesKey')

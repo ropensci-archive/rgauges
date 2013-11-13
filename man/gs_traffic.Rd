@@ -18,16 +18,16 @@
 \description{
   Traffic on a gauges ID
 }
+\note{
+  Note that these examples only work if you provide your
+  Gaug.es API key either by passing in the function, or
+  storing your key in your .Rprofile file, defaults to
+  looking for an entry of "GaugesKey".
+}
 \examples{
 \dontrun{
-# scotts data
 gs_traffic(id='4efd83a6f5a1f5158a000004')
 gs_traffic(id='4efd83a6f5a1f5158a000004', date='2013-05-26')
-gs_traffic(id='4efd83a6f5a1f5158a000004', date='2013-01-10')
-
-# ropensci data
-ro_id <- gs_gauge_list(keyname='ropensciGaugesKey')$gauges[[6]]$id # ropensci is gauge number 6
-gs_traffic(id=ro_id, keyname='ropensciGaugesKey')
 }
 }
 

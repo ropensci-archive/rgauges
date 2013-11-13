@@ -1,13 +1,11 @@
 #' Returns an array of your API clients.
 #' 
 #' @import httr
+#' @template all
 #' @param keyname Your API key name in your .Rprofile file
 #' @examples \dontrun{
-#' # scotts data
+#' # Default key name is GaugesKey
 #' gs_clients()
-#' 
-#' # ropensci data
-#' gs_clients(keyname='ropensciGaugesKey')
 #' }
 #' @export
 gs_clients <- function(keyname='GaugesKey')

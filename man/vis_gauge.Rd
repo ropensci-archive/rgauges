@@ -16,17 +16,19 @@
 \description{
   Plot a class of gauge
 }
+\note{
+  Note that these examples only work if you provide your
+  Gaug.es API key either by passing in the function, or
+  storing your key in your .Rprofile file, defaults to
+  looking for an entry of "GaugesKey".
+}
 \examples{
 \dontrun{
-# get detail on the ropensci gauge
+# get detail on a gauge
 out <- gs_gauge_detail(id='500ebcf4613f5d79c700001c', keyname='ropensciGaugesKey')
 
 # visualize
 vis_gauge(x=out)
-
-# scotts data
-out <- gs_gauge_detail(id='4efd83a6f5a1f5158a000004')
-vis_gauge(out)
 }
 }
 

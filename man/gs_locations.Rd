@@ -18,10 +18,16 @@
 \description{
   Information on locations
 }
+\note{
+  Note that these examples only work if you provide your
+  Gaug.es API key either by passing in the function, or
+  storing your key in your .Rprofile file, defaults to
+  looking for an entry of "GaugesKey".
+}
 \examples{
 \dontrun{
-out <- gs_gauge_list(keyname='ropensciGaugesKey')
-gs_locations(id=out$brief[6,1], keyname='ropensciGaugesKey') # ropensci locations
+out <- gs_gauge_list()
+gs_locations(id=out$brief[6,1])
 }
 }
 
