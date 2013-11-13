@@ -11,7 +11,7 @@ See the Gaug.es API documentation here [http://get.gaug.es/documentation/](http:
 
 ### Authentication
 
-Get your own API in your Gaug.es 'My Account' page and put in your .Rprofile file under the name 'GaugesKey' or some other name (you can specify `keyname` in function calls).
+Get your own API key in your Gaug.es 'My Account' page and put in your .Rprofile file under the name 'GaugesKey' or some other name (you can specify `keyname` in function calls - but if you put in as 'GaugesKey' you're all set and don't need to bother with the `keyname` parameter).
 
 ### Quick start
 
