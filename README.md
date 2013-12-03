@@ -9,6 +9,8 @@ rgauges
 
 See the Gaug.es API documentation here [http://get.gaug.es/documentation/](http://get.gaug.es/documentation/)
 
+`rgauges` is listed as one of the Gaug.es API libraries [here](http://get.gaug.es/documentation/api/libraries/), along with libraries for Ruby and Node.js
+
 ### Authentication
 
 Get your own API key in your Gaug.es 'My Account' page and put in your .Rprofile file under the name 'GaugesKey' or some other name (you can specify `keyname` in function calls - but if you put in as 'GaugesKey' you're all set and don't need to bother with the `keyname` parameter).
