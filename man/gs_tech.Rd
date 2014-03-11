@@ -2,7 +2,7 @@
 \alias{gs_tech}
 \title{Gets browsers and platforms for a gauge.}
 \usage{
-  gs_tech(id, date = NULL, keyname = "GaugesKey")
+gs_tech(id, date = NULL, keyname = "GaugesKey")
 }
 \arguments{
   \item{id}{Your gaug.es id}
@@ -16,16 +16,16 @@
   \item{keyname}{Your API key name in your .Rprofile file}
 }
 \value{
-  list of two, browsers and platforms
+list of two, browsers and platforms
 }
 \description{
-  Gets browsers and platforms for a gauge.
+Gets browsers and platforms for a gauge.
 }
 \note{
-  Note that these examples only work if you provide your
-  Gaug.es API key either by passing in the function, or
-  storing your key in your .Rprofile file, defaults to
-  looking for an entry of "GaugesKey".
+Note that these examples only work if you provide your
+Gaug.es API key either by passing in the function, or
+storing your key in your .Rprofile file, defaults to
+looking for an entry of "GaugesKey".
 }
 \examples{
 \dontrun{

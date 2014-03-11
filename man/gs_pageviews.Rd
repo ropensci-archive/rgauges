@@ -2,8 +2,8 @@
 \alias{gs_pageviews}
 \title{Gets top content for a gauge, paginated.}
 \usage{
-  gs_pageviews(id, fromdate = NULL, todate = NULL,
-    page = NULL, keyname = "GaugesKey")
+gs_pageviews(id, fromdate = NULL, todate = NULL, page = NULL,
+  keyname = "GaugesKey")
 }
 \arguments{
   \item{id}{Your gaug.es id}
@@ -18,13 +18,13 @@
   \item{keyname}{Your API key name in your .Rprofile file}
 }
 \description{
-  Gets top content for a gauge, paginated.
+Gets top content for a gauge, paginated.
 }
 \note{
-  Note that these examples only work if you provide your
-  Gaug.es API key either by passing in the function, or
-  storing your key in your .Rprofile file, defaults to
-  looking for an entry of "GaugesKey".
+Note that these examples only work if you provide your
+Gaug.es API key either by passing in the function, or
+storing your key in your .Rprofile file, defaults to
+looking for an entry of "GaugesKey".
 }
 \examples{
 \dontrun{

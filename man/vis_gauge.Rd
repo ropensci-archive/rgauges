@@ -3,9 +3,9 @@
 \alias{vis_gauge.default}
 \title{Plot a class of gauge}
 \usage{
-  vis_gauge(...)
+vis_gauge(...)
 
-  \method{vis_gauge}{default} (x, ...)
+\method{vis_gauge}{default}(x, ...)
 }
 \arguments{
   \item{x}{Input, see examples}
@@ -14,13 +14,13 @@
   vis_gauge.default, not currenlty used}
 }
 \description{
-  Plot a class of gauge
+Plot a class of gauge
 }
 \note{
-  Note that these examples only work if you provide your
-  Gaug.es API key either by passing in the function, or
-  storing your key in your .Rprofile file, defaults to
-  looking for an entry of "GaugesKey".
+Note that these examples only work if you provide your
+Gaug.es API key either by passing in the function, or
+storing your key in your .Rprofile file, defaults to
+looking for an entry of "GaugesKey".
 }
 \examples{
 \dontrun{

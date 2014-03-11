@@ -2,12 +2,12 @@
 \alias{is.gauge}
 \title{Check if object is of class gauge}
 \usage{
-  is.gauge(x)
+is.gauge(x)
 }
 \arguments{
   \item{x}{input}
 }
 \description{
-  Check if object is of class gauge
+Check if object is of class gauge
 }
 

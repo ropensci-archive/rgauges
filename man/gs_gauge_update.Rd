@@ -2,10 +2,9 @@
 \alias{gs_gauge_update}
 \title{Updates and returns a gauge with the updates applied.}
 \usage{
-  gs_gauge_update(id = NULL,
-    tz = "Eastern Time (US & Canada)", title = "foo_bar",
-    allowed_hosts = NULL, keyname = "GaugesKey",
-    verbose = TRUE)
+gs_gauge_update(id = NULL, tz = "Eastern Time (US & Canada)",
+  title = "foo_bar", allowed_hosts = NULL, keyname = "GaugesKey",
+  verbose = TRUE)
 }
 \arguments{
   \item{id}{Id of the gauge}
@@ -25,20 +24,20 @@
   \item{verbose}{Print http status (default) or not}
 }
 \value{
-  Gives HTTP status and metadata for the new gauge.
+Gives HTTP status and metadata for the new gauge.
 }
 \description{
-  Updates and returns a gauge with the updates applied.
+Updates and returns a gauge with the updates applied.
 }
 \details{
-  Note that you can create gaguges with the same names,
-  beware.
+Note that you can create gaguges with the same names,
+beware.
 }
 \note{
-  Note that these examples only work if you provide your
-  Gaug.es API key either by passing in the function, or
-  storing your key in your .Rprofile file, defaults to
-  looking for an entry of "GaugesKey".
+Note that these examples only work if you provide your
+Gaug.es API key either by passing in the function, or
+storing your key in your .Rprofile file, defaults to
+looking for an entry of "GaugesKey".
 }
 \examples{
 \dontrun{

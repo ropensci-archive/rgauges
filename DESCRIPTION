@@ -19,20 +19,3 @@ Imports:
     gridExtra,
     scales,
     data.table
-Collate:
-    'gauges.R'
-    'vis_gauge.R'
-    'zzz.R'
-    'clients.R'
-    'content.R'
-    'engines.R'
-    'locations.R'
-    'me.R'
-    'referrers.R'
-    'resolution.R'
-    'sharing.R'
-    'technology.R'
-    'terms.R'
-    'traffic.R'
-    'pageviews.R'
-    'globals.R'

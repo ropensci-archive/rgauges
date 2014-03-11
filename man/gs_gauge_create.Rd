@@ -2,10 +2,8 @@
 \alias{gs_gauge_create}
 \title{Creates a new gauge.}
 \usage{
-  gs_gauge_create(title = "hello_world2",
-    tz = "Eastern Time (US & Canada)",
-    allowed_hosts = NULL, keyname = "GaugesKey",
-    verbose = TRUE)
+gs_gauge_create(title = "hello_world2", tz = "Eastern Time (US & Canada)",
+  allowed_hosts = NULL, keyname = "GaugesKey", verbose = TRUE)
 }
 \arguments{
   \item{title}{Title of the gauge.}
@@ -23,20 +21,20 @@
   \item{verbose}{Print http status (default) or not}
 }
 \value{
-  Gives HTTP status and metadata for the new gauge.
+Gives HTTP status and metadata for the new gauge.
 }
 \description{
-  Creates a new gauge.
+Creates a new gauge.
 }
 \details{
-  Note that you can create gaguges with the same names,
-  beware.
+Note that you can create gaguges with the same names,
+beware.
 }
 \note{
-  Note that these examples only work if you provide your
-  Gaug.es API key either by passing in the function, or
-  storing your key in your .Rprofile file, defaults to
-  looking for an entry of "GaugesKey".
+Note that these examples only work if you provide your
+Gaug.es API key either by passing in the function, or
+storing your key in your .Rprofile file, defaults to
+looking for an entry of "GaugesKey".
 }
 \examples{
 \dontrun{

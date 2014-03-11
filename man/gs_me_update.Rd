@@ -2,10 +2,10 @@
 \alias{gs_me_update}
 \title{Updates and returns your information with the updates applied.}
 \usage{
-  gs_me_update()
+gs_me_update()
 }
 \description{
-  Updates and returns your information with the updates
-  applied.
+Updates and returns your information with the updates
+applied.
 }
 

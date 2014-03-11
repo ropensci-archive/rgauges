@@ -2,7 +2,7 @@
 \alias{gs_locations}
 \title{Information on locations}
 \usage{
-  gs_locations(id, date = NULL, keyname = "GaugesKey")
+gs_locations(id, date = NULL, keyname = "GaugesKey")
 }
 \arguments{
   \item{id}{Your gaug.es id}
@@ -16,13 +16,13 @@
   \item{keyname}{Your API key name in your .Rprofile file}
 }
 \description{
-  Information on locations
+Information on locations
 }
 \note{
-  Note that these examples only work if you provide your
-  Gaug.es API key either by passing in the function, or
-  storing your key in your .Rprofile file, defaults to
-  looking for an entry of "GaugesKey".
+Note that these examples only work if you provide your
+Gaug.es API key either by passing in the function, or
+storing your key in your .Rprofile file, defaults to
+looking for an entry of "GaugesKey".
 }
 \examples{
 \dontrun{
