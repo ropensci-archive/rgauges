@@ -3,6 +3,7 @@
 #' @template all
 #' @import httr
 #' @importFrom plyr compact rbind.fill
+#' @export
 #' @param id Your gaug.es id
 #' @param date Date format YYYY-MM-DD.
 #' @param page page to return
@@ -13,9 +14,9 @@
 #' 
 #' # Get list of gauge's, then pass in one of the ids
 #' out <- gs_gauge_list()
-#' gs_ref(id=out$brief[6,1])
+#' gs_ref(id=out$brief[12,1])
 #' }
-#' @export
+
 gs_ref <- function(id, date=NULL, page=NULL, keyname='GaugesKey', callopts=list())
 {
   key <- getOption(keyname, stop("you need an API key for Gaug.es data"))

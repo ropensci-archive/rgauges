@@ -11,12 +11,12 @@
 #' 
 #' # or get a gauge id using X
 #' out <- gs_gauge_list()
-#' gs_engines(id=out$brief[15,1])
-#' gs_engines(id=out$brief[15,1], date="2013-11-01")
+#' gs_engines(id=out$brief[12,1])
+#' gs_engines(id=out$brief[12,1], date="2013-11-01")
 #' 
 #' # Get list of gauge's, then pass in one of the ids
 #' out <- gs_gauge_list()
-#' gs_engines(id=out$brief[6,1])
+#' gs_engines(id=out$brief[12,1])
 #' }
 
 gs_engines <- function(id, date=NULL, keyname='GaugesKey', callopts=list())

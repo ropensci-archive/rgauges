@@ -3,6 +3,7 @@
 #' @template all
 #' @import httr
 #' @importFrom plyr compact rbind.fill
+#' @export
 #' @inheritParams gs_traffic
 #' @param callopts Curl debugging options passed in to httr::GET
 #' @examples \dontrun{
@@ -10,9 +11,9 @@
 #' 
 #' # Get list of gauge's, then pass in one of the ids
 #' out <- gs_gauge_list()
-#' gs_reso(id=out$brief[6,1]) 
+#' gs_reso(id=out$brief[12,1]) 
 #' }
-#' @export
+
 gs_reso <- function(id, date=NULL, keyname='GaugesKey', callopts=list())
 {
   key <- getOption(keyname, stop("you need an API key for Gaug.es data"))

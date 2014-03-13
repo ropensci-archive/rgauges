@@ -1,6 +1,7 @@
 #' Gets top content for a gauge, paginated.
 #' 
 #' @import httr
+#' @export
 #' @template all
 #' @importFrom plyr compact rbind.fill
 #' @inheritParams gs_ref
@@ -12,9 +13,9 @@
 #' 
 #' # Get list of gauge's, then pass in one of the ids
 #' out <- gs_gauge_list()
-#' gs_content(id=out$brief[6,1])
+#' gs_content(id=out$brief[12,1])
 #' }
-#' @export
+
 gs_content <- function(id, date=NULL, page=NULL, keyname='GaugesKey', callopts=list())
 {
   key <- getOption(keyname, stop("you need an API key for Gaug.es data"))

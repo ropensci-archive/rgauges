@@ -2,6 +2,7 @@
 #' 
 #' @template all
 #' @import httr
+#' @export
 #' @param id Your gaug.es id
 #' @param keyname Your API key name in your .Rprofile file
 #' @param callopts Curl debugging options passed in to httr::GET
@@ -10,9 +11,9 @@
 #' 
 #' # Get list of gauge's, then pass in one of the ids
 #' out <- gs_gauge_list()
-#' gs_shares(id=out$brief[6,1])
+#' gs_shares(id=out$brief[12,1])
 #' }
-#' @export
+
 gs_shares <- function(id, keyname='GaugesKey', callopts=list())
 {
   key <- getOption(keyname, stop("you need an API key for Gaug.es data"))

@@ -3,6 +3,7 @@
 #' @template all
 #' @import httr
 #' @importFrom plyr rbind.fill
+#' @export
 #' @param id Your gaug.es id
 #' @param date Date format YYYY-MM-DD. This works in a weird way. If you give no 
 #'    date, you get the traffic for each day since the beginning of the current month,
@@ -13,7 +14,7 @@
 #' gs_traffic(id='4efd83a6f5a1f5158a000004')
 #' gs_traffic(id='4efd83a6f5a1f5158a000004', date='2013-05-26')
 #' }
-#' @export
+
 gs_traffic <- function(id, date=NULL, keyname='GaugesKey', callopts=list())
 {
   key <- getOption(keyname, stop("you need an API key for Gaug.es data"))

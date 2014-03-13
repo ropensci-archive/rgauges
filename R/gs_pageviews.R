@@ -3,6 +3,7 @@
 #' @template all
 #' @import httr data.table
 #' @importFrom lubridate today
+#' @export
 #' @param id Your gaug.es id
 #' @param fromdate Date to get data from. Defaults to today.
 #' @param todate Date to get data to. Defaults to today.
@@ -11,7 +12,7 @@
 #' @examples \dontrun{
 #' gs_pageviews(id='4efd83a6f5a1f5158a000004', fromdate="2013-11-01", todate="2013-11-06")
 #' }
-#' @export
+
 gs_pageviews <- function(id, fromdate = NULL, todate = NULL, page=NULL,
                          keyname='GaugesKey')
 {
