@@ -4,6 +4,7 @@
 #' @template all
 #' @importFrom plyr compact rbind.fill
 #' @inheritParams gs_ref
+#' @param callopts Curl debugging options passed in to httr::GET
 #' @examples \dontrun{
 #' # Default key name is GaugesKey
 #' gs_content(id='4efd83a6f5a1f5158a000004')
@@ -14,12 +15,12 @@
 #' gs_content(id=out$brief[6,1])
 #' }
 #' @export
-gs_content <- function(id, date=NULL, page=NULL, keyname='GaugesKey')
+gs_content <- function(id, date=NULL, page=NULL, keyname='GaugesKey', callopts=list())
 {
   key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- sprintf('https://secure.gaug.es/gauges/%s/content', id)
   args <- compact(list(date=date, page=page))
-  tt <- GET(url, query=args, config=list(httpheader=paste0('X-Gauges-Token:',key)))
+  tt <- GET(url=url, query=args, config=c(add_headers('X-Gauges-Token' = key), callopts))
   stop_for_status(tt)
   out <- content(tt)
   dat <- do.call(rbind.fill, lapply(out$content, function(x) data.frame(x,stringsAsFactors=FALSE)))

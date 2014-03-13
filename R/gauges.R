@@ -5,16 +5,17 @@
 #' @importFrom plyr rbind.fill
 #' @param page Page to return.
 #' @param keyname Your API key name in your .Rprofile file
+#' @param callopts Curl debugging options passed in to httr::GET
 #' @examples \dontrun{
 #' gs_gauge_list()
 #' }
 #' @export
-gs_gauge_list <- function(keyname='GaugesKey', page=NULL)
+gs_gauge_list <- function(keyname='GaugesKey', page=NULL, callopts=list())
 {
   key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- 'https://secure.gaug.es/gauges'
   args <- compact(list(page=page))
-  tt <- GET(url=url, query=args, config=list(httpheader=paste0('X-Gauges-Token:',key)))
+  tt <- GET(url=url, query=args, config=c(add_headers('X-Gauges-Token' = key), callopts))
   stop_for_status(tt)
   out <- content(tt)
   brief <- do.call(rbind.fill, lapply(out$gauges, function(x) data.frame(x[c('id','title')],stringsAsFactors=FALSE)))
@@ -37,7 +38,7 @@ gs_gauge_list <- function(keyname='GaugesKey', page=NULL)
 gs_gauge_delete <-  function(id, keyname='GaugesKey'){
   key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- sprintf('https://secure.gaug.es/gauges/%s', id)
-  message(http_status(DELETE(url, token))$message)
+  message(http_status(DELETE(url, add_headers("X-Gauges-Token" = key)))$message)
 }
 
 #' Gets details for a gauge.
@@ -45,6 +46,7 @@ gs_gauge_delete <-  function(id, keyname='GaugesKey'){
 #' @template all
 #' @param id id of the gauge
 #' @param keyname Your API key name in your .Rprofile file
+#' @param callopts Curl debugging options passed in to httr::GET
 #' @details Gets details on a gauge, by specifying the id of the gauge. 
 #' @examples \dontrun{
 #' # create a dummy gauge
@@ -54,10 +56,10 @@ gs_gauge_delete <-  function(id, keyname='GaugesKey'){
 #' gs_gauge_detail(out$id)
 #' }
 #' @export
-gs_gauge_detail <- function(id, keyname='GaugesKey'){
+gs_gauge_detail <- function(id, keyname='GaugesKey', callopts=list()){
   key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- sprintf('https://secure.gaug.es/gauges/%s', id)
-  tt <- GET(url, config=list(httpheader=paste0('X-Gauges-Token:',key)))
+  tt <- GET(url, config=c(add_headers('X-Gauges-Token' = key), callopts))
   stop_for_status(tt)
   out <- content(tt)
   parse_gauge_detail(out)
@@ -106,9 +108,8 @@ parse_gauge_detail <- function(out)
 gs_gauge_create <- function(title = 'hello_world2', tz = 'Eastern Time (US & Canada)', 
                             allowed_hosts = NULL, keyname='GaugesKey', verbose=TRUE)
 {  
-  token <- add_headers("X-Gauges-Token" = key)
   body <- compact(list(title = title, tz = tz, allowed_hosts = allowed_hosts))
-  tt <- POST("https://secure.gaug.es/gauges", token, body = body)
+  tt <- POST("https://secure.gaug.es/gauges", add_headers("X-Gauges-Token" = key), body = body)
   stop_for_status(tt)
   status <- http_status(tt)$message
   if(verbose) message(status)
