@@ -4,6 +4,8 @@
 #' @template all
 #' @importFrom plyr rbind.fill
 #' @param page Page to return.
+#' @param key API key. If left NULL, function looks for key in your options settings
+#' defined in the keyname parameter
 #' @param keyname Your API key name in your .Rprofile file
 #' @param callopts Curl debugging options passed in to httr::GET
 #' @examples \dontrun{

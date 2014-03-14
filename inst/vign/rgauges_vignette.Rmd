@@ -1,0 +1,140 @@
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{rgauges vignette}
+-->
+
+```{r, eval=TRUE, echo=FALSE}
+opts_chunk$set(fig.width=6, fig.height=5, fig.pos="h")
+```
+
+rgauges vignette
+=======
+
+Gaug.es is a paid service for website analytics. It doesn't do as much as Google Analytics, but its super simple and clean, and has a great iPhone app, and an Android app. Each website you want to track is tracked under its own gauge. 
+
+Most functions have the same format in which you pass in the id for a gauge (i.e, a website you are tracking), and your API key (see authentication below). Some functions give back data on your site overall and in that case you don't pass in a date, but others can be quieried per date or a range of dates, in which case you can pass in dates. There is one plotting function (`vis_gauge`) that gives a nice default plot. But of course you can easily make your own plots. 
+
+## Gaug.es API docs
+
+See the Gaug.es API documentation here [http://get.gaug.es/documentation/](http://get.gaug.es/documentation/)
+
+`rgauges` is listed as one of the Gaug.es API libraries [here](http://get.gaug.es/documentation/api/libraries/), along with libraries for Ruby and Node.js
+
+## Authentication
+
+Get your own API key in your Gaug.es 'My Account' page and put in your _.Rprofile_ file under the name 'GaugesKey' or some other name (you can specify `keyname` in function calls - but if you put in as 'GaugesKey' you're all set and don't need to bother with the `keyname` parameter).
+
+You can alternatively pass in your key using the `key` parameter in each function. 
+
+Note that in the below examples I'm using my key from my _.Rprofile_ file, so you don't see it being passed in the function call. 
+
+
+## Installation
+
+More stable version from CRAN
+
+```{r eval=FALSE}
+install.packages("rgauges")
+```
+
+Development version from Github
+
+```{r eval=FALSE}
+install.packages("devtools")
+library(devtools)
+install_github("rgauges", "ropensci")
+```
+
+
+```{r}
+library(rgauges)
+```
+
+## Your info
+
+Information on yourself.
+
+```{r}
+gs_me()
+```
+
+## Traffic
+
+Traffic on a gauges ID
+
+```{r}
+gs_traffic(id='4efd83a6f5a1f5158a000004')
+```
+
+
+## Screen/browser information
+
+Information on screen/browser resolutions
+
+```{r}
+gs_reso(id='4efd83a6f5a1f5158a000004')
+```
+
+## Visualize traffic data
+
+You'll need to load ggplot2 
+
+```{r}
+library(ggplot2)
+out <- gs_gauge_detail(id='4efd83a6f5a1f5158a000004')
+vis_gauge(out)
+```
+
+## Shares
+
+Lists the people that have access to a Gauge.
+
+```{r}
+gs_shares(id='4efd83a6f5a1f5158a000004')
+```
+
+## Referrers
+
+Gets referrers for a gauge, paginated.
+
+```{r}
+gs_ref(id='4efd83a6f5a1f5158a000004', date = '2014-03-10')$data
+```
+
+## Technology
+
+Gets browsers and platforms for a gauge.
+
+```{r}
+gs_tech(id='4efd83a6f5a1f5158a000004')
+```
+
+## Get pageviews for each page
+
+```{r}
+head( gs_pageviews(id='4efd83a6f5a1f5158a000004', fromdate="2013-11-01", todate="2013-11-06") )
+```
+
+## Top content
+
+Gets top content for a gauge, paginated.
+
+```{r}
+head( gs_content(id='4efd83a6f5a1f5158a000004', date="2013-11-01")$data )
+```
+
+## Search terms
+
+Gets search terms for a gauge, paginated.
+
+```{r}
+gs_terms(id='4efd83a6f5a1f5158a000004', date = '2014-02-05')$data
+```
+
+## Locations
+
+Information on locations
+
+```{r}
+head( gs_locations(id='4efd83a6f5a1f5158a000004')$data )
+```

@@ -1,3 +1,16 @@
+rgauges 0.2.0
+===============
+
+NEW FEATURES 
+
+* Changed from CC0 to MIT license. 
+* All functions gain parameter `key` so that you can pass in a key directly instead of passing in a key name which looks for a key in your options settings or in your .Rprofile
+* Added a vignette (#8)
+
+BUG FIXES
+
+* Fixed cofiguration of api key in the header using `add_headers` rather than `list(httpheader=...)` - works with new version of `httr`
+
 rgauges 0.1.5
 ===============
 
