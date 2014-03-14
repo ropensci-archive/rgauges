@@ -3,7 +3,8 @@
 \alias{gs_gauge_list}
 \title{List your gaug.es}
 \usage{
-gs_gauge_list(keyname = "GaugesKey", page = NULL, callopts = list())
+gs_gauge_list(key = NULL, keyname = "GaugesKey", page = NULL,
+  callopts = list())
 }
 \arguments{
   \item{page}{Page to return.}

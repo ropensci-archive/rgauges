@@ -3,10 +3,14 @@
 \alias{gs_gauge_delete}
 \title{Permanently deletes a gauge.}
 \usage{
-gs_gauge_delete(id, keyname = "GaugesKey")
+gs_gauge_delete(id, key = NULL, keyname = "GaugesKey")
 }
 \arguments{
   \item{id}{id of the gauge}
+
+  \item{key}{API key. If left NULL, function looks for key
+  in your options settings defined in the keyname
+  parameter}
 
   \item{keyname}{Your API key name in your .Rprofile file}
 }

@@ -3,7 +3,8 @@
 \alias{gs_traffic}
 \title{Traffic on a gauges ID}
 \usage{
-gs_traffic(id, date = NULL, keyname = "GaugesKey", callopts = list())
+gs_traffic(id, date = NULL, key = NULL, keyname = "GaugesKey",
+  callopts = list())
 }
 \arguments{
   \item{id}{Your gaug.es id}
@@ -13,6 +14,10 @@ gs_traffic(id, date = NULL, keyname = "GaugesKey", callopts = list())
   day since the beginning of the current month, but if you
   give a date, you get the traffic for each day for that
   entire month.}
+
+  \item{key}{API key. If left NULL, function looks for key
+  in your options settings defined in the keyname
+  parameter}
 
   \item{keyname}{Your API key name in your .Rprofile file}
 

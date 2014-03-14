@@ -4,8 +4,8 @@
 \title{Updates and returns a gauge with the updates applied.}
 \usage{
 gs_gauge_update(id = NULL, tz = "Eastern Time (US & Canada)",
-  title = "foo_bar", allowed_hosts = NULL, keyname = "GaugesKey",
-  verbose = TRUE)
+  title = "foo_bar", allowed_hosts = NULL, key = NULL,
+  keyname = "GaugesKey", verbose = TRUE)
 }
 \arguments{
   \item{id}{Id of the gauge}
@@ -19,6 +19,10 @@ gs_gauge_update(id = NULL, tz = "Eastern Time (US & Canada)",
 
   \item{allowed_hosts}{Comma or space separated list of
   domains to accept tracking data from.}
+
+  \item{key}{API key. If left NULL, function looks for key
+  in your options settings defined in the keyname
+  parameter}
 
   \item{keyname}{Your API key name in your .Rprofile file}
 

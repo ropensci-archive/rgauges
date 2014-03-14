@@ -3,7 +3,8 @@
 \alias{gs_locations}
 \title{Information on locations}
 \usage{
-gs_locations(id, date = NULL, keyname = "GaugesKey", callopts = list())
+gs_locations(id, date = NULL, key = NULL, keyname = "GaugesKey",
+  callopts = list())
 }
 \arguments{
   \item{callopts}{Curl debugging options passed in to
@@ -16,6 +17,10 @@ gs_locations(id, date = NULL, keyname = "GaugesKey", callopts = list())
   day since the beginning of the current month, but if you
   give a date, you get the traffic for each day for that
   entire month.}
+
+  \item{key}{API key. If left NULL, function looks for key
+  in your options settings defined in the keyname
+  parameter}
 
   \item{keyname}{Your API key name in your .Rprofile file}
 }
@@ -30,8 +35,9 @@ Note that these examples only work if you provide your
 }
 \examples{
 \dontrun{
-out <- gs_gauge_list()
-gs_locations(id=out$brief[6,1])
+res <- gs_gauge_list()
+id = res$brief[ res$brief$title == 'Recology-Jekyll', "id"]
+gs_locations(id=id)
 }
 }
 

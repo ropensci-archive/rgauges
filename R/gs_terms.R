@@ -11,12 +11,13 @@
 #' 
 #' # Get list of gauge's, then pass in one of the ids
 #' out <- gs_gauge_list()
-#' gs_terms(id=out$brief[12,1])
+#' gs_terms(id=out$brief[1,'id'])
 #' }
 
-gs_terms <- function(id, date=NULL, page=NULL, keyname='GaugesKey', callopts=list())
+gs_terms <- function(id, date=NULL, page=NULL, key=NULL, keyname='GaugesKey', callopts=list())
 {
-  key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
+  if(is.null(key))
+    key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- paste0('https://secure.gaug.es/gauges/', id, '/terms')
   args <- compact(list(date=date, page=page))
   tt <- GET(url=url, query=args, config=c(add_headers('X-Gauges-Token' = key), callopts))

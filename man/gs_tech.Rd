@@ -3,7 +3,8 @@
 \alias{gs_tech}
 \title{Gets browsers and platforms for a gauge.}
 \usage{
-gs_tech(id, date = NULL, keyname = "GaugesKey", callopts = list())
+gs_tech(id, date = NULL, key = NULL, keyname = "GaugesKey",
+  callopts = list())
 }
 \arguments{
   \item{callopts}{Curl debugging options passed in to
@@ -16,6 +17,10 @@ gs_tech(id, date = NULL, keyname = "GaugesKey", callopts = list())
   day since the beginning of the current month, but if you
   give a date, you get the traffic for each day for that
   entire month.}
+
+  \item{key}{API key. If left NULL, function looks for key
+  in your options settings defined in the keyname
+  parameter}
 
   \item{keyname}{Your API key name in your .Rprofile file}
 }
@@ -36,8 +41,9 @@ Note that these examples only work if you provide your
 gs_tech(id='4efd83a6f5a1f5158a000004')
 
 # Get list of gauge's, then pass in one of the ids
+# output will depend on the id, so this may give no data
 out <- gs_gauge_list()
-gs_tech(id=out$brief[6,1])
+gs_tech(id=out$brief[1,'id'])
 }
 }
 

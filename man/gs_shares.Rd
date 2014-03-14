@@ -3,10 +3,14 @@
 \alias{gs_shares}
 \title{Lists the people that have access to a Gauge.}
 \usage{
-gs_shares(id, keyname = "GaugesKey", callopts = list())
+gs_shares(id, key = NULL, keyname = "GaugesKey", callopts = list())
 }
 \arguments{
   \item{id}{Your gaug.es id}
+
+  \item{key}{API key. If left NULL, function looks for key
+  in your options settings defined in the keyname
+  parameter}
 
   \item{keyname}{Your API key name in your .Rprofile file}
 
@@ -28,7 +32,7 @@ gs_shares(id='4efd83a6f5a1f5158a000004')
 
 # Get list of gauge's, then pass in one of the ids
 out <- gs_gauge_list()
-gs_shares(id=out$brief[6,1])
+gs_shares(id=out$brief[1,'id'])
 }
 }
 

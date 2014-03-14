@@ -3,10 +3,14 @@
 \alias{gs_gauge_detail}
 \title{Gets details for a gauge.}
 \usage{
-gs_gauge_detail(id, keyname = "GaugesKey", callopts = list())
+gs_gauge_detail(id, key = NULL, keyname = "GaugesKey", callopts = list())
 }
 \arguments{
   \item{id}{id of the gauge}
+
+  \item{key}{API key. If left NULL, function looks for key
+  in your options settings defined in the keyname
+  parameter}
 
   \item{keyname}{Your API key name in your .Rprofile file}
 

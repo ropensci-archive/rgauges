@@ -11,17 +11,18 @@
 #' 
 #' # or get a gauge id using X
 #' out <- gs_gauge_list()
-#' gs_engines(id=out$brief[12,1])
-#' gs_engines(id=out$brief[12,1], date="2013-11-01")
+#' gs_engines(id=out$brief[1,'id'])
+#' gs_engines(id=out$brief[1,'id'], date="2013-11-01")
 #' 
 #' # Get list of gauge's, then pass in one of the ids
 #' out <- gs_gauge_list()
-#' gs_engines(id=out$brief[12,1])
+#' gs_engines(id=out$brief[1,'id'])
 #' }
 
-gs_engines <- function(id, date=NULL, keyname='GaugesKey', callopts=list())
+gs_engines <- function(id, date=NULL, key=NULL, keyname='GaugesKey', callopts=list())
 {
-  key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
+  if(is.null(key))
+    key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- sprintf('https://secure.gaug.es/gauges/%s/engines', id)
   args <- compact(list(date=date))
   tt <- GET(url=url, query=args, config=c(add_headers('X-Gauges-Token' = key), callopts))

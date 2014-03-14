@@ -4,7 +4,8 @@
 \title{Creates a new gauge.}
 \usage{
 gs_gauge_create(title = "hello_world2", tz = "Eastern Time (US & Canada)",
-  allowed_hosts = NULL, keyname = "GaugesKey", verbose = TRUE)
+  allowed_hosts = NULL, key = NULL, keyname = "GaugesKey",
+  verbose = TRUE)
 }
 \arguments{
   \item{title}{Title of the gauge.}
@@ -16,6 +17,10 @@ gs_gauge_create(title = "hello_world2", tz = "Eastern Time (US & Canada)",
 
   \item{allowed_hosts}{Comma or space separated list of
   domains to accept tracking data from.}
+
+  \item{key}{API key. If left NULL, function looks for key
+  in your options settings defined in the keyname
+  parameter}
 
   \item{keyname}{Your API key name in your .Rprofile file}
 

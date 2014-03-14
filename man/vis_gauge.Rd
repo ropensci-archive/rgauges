@@ -26,6 +26,7 @@ Note that these examples only work if you provide your
 \examples{
 \dontrun{
 # get detail on a gauge
+# here passing in a key name which is stored in my .Rprofile file
 out <- gs_gauge_detail(id='500ebcf4613f5d79c700001c', keyname='ropensciGaugesKey')
 
 # visualize

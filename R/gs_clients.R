@@ -2,6 +2,8 @@
 #' 
 #' @import httr
 #' @template all
+#' @param key API key. If left NULL, function looks for key in your options settings
+#' defined in the keyname parameter
 #' @param keyname Your API key name in your .Rprofile file
 #' @param callopts Curl debugging options passed in to httr::GET
 #' @examples \dontrun{
@@ -9,9 +11,10 @@
 #' gs_clients()
 #' }
 #' @export
-gs_clients <- function(keyname='GaugesKey', callopts=list())
+gs_clients <- function(key=NULL, keyname='GaugesKey', callopts=list())
 {
-  key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
+  if(is.null(key))
+    key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- 'https://secure.gaug.es/clients'
   tt <- GET(url=url, config=c(add_headers('X-Gauges-Token' = key), callopts))
   stop_for_status(tt)

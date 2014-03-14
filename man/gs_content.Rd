@@ -3,8 +3,8 @@
 \alias{gs_content}
 \title{Gets top content for a gauge, paginated.}
 \usage{
-gs_content(id, date = NULL, page = NULL, keyname = "GaugesKey",
-  callopts = list())
+gs_content(id, date = NULL, page = NULL, key = NULL,
+  keyname = "GaugesKey", callopts = list())
 }
 \arguments{
   \item{callopts}{Curl debugging options passed in to
@@ -15,6 +15,10 @@ gs_content(id, date = NULL, page = NULL, keyname = "GaugesKey",
   \item{date}{Date format YYYY-MM-DD.}
 
   \item{page}{page to return}
+
+  \item{key}{API key. If left NULL, function looks for key
+  in your options settings defined in the keyname
+  parameter}
 
   \item{keyname}{Your API key name in your .Rprofile file}
 }
@@ -35,7 +39,7 @@ gs_content(id='4efd83a6f5a1f5158a000004', date="2013-11-01")
 
 # Get list of gauge's, then pass in one of the ids
 out <- gs_gauge_list()
-gs_content(id=out$brief[6,1])
+gs_content(id=out$brief[1,'id'])
 }
 }
 

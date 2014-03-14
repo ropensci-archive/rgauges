@@ -3,9 +3,13 @@
 \alias{gs_me}
 \title{Information on yourself.}
 \usage{
-gs_me(keyname = "GaugesKey", callopts = list())
+gs_me(key = NULL, keyname = "GaugesKey", callopts = list())
 }
 \arguments{
+  \item{key}{API key. If left NULL, function looks for key
+  in your options settings defined in the keyname
+  parameter}
+
   \item{keyname}{Your API key name in your .Rprofile file}
 
   \item{callopts}{Curl debugging options passed in to
@@ -23,6 +27,7 @@ Note that these examples only work if you provide your
 \examples{
 \dontrun{
 gs_me()
+library(httr)
 gs_me(callopts=verbose())
 }
 }
