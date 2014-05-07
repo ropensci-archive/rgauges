@@ -29,11 +29,15 @@ gs_pageviews <- function(id, fromdate = NULL, todate = NULL, page=NULL,
   
   getcontents <- function(x){  
     temp <- gs_content(id=id, date=x, page=page, keyname=keyname)$data
-    data.frame(date=x, temp[,c('title','views')])
+    if(is.null(temp)){
+      data.frame(date=x, title = "none", views = NA, stringsAsFactors = FALSE)
+    } else {
+      data.frame(date=x, temp[,c('title','views')], stringsAsFactors = FALSE)
+    }
   }
   
   out <- lapply(datestoget, getcontents)
   out <- do.call(rbind.fill, out)
   dt <- data.table(out)
-  data.frame(dt[, sum(views), by=title])
+  data.frame(dt[, sum(views), by=title], stringsAsFactors = FALSE)
 }

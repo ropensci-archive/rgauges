@@ -6,16 +6,14 @@
 gs_shares(id, key = NULL, keyname = "GaugesKey", callopts = list())
 }
 \arguments{
-  \item{id}{Your gaug.es id}
+\item{id}{Your gaug.es id}
 
-  \item{key}{API key. If left NULL, function looks for key
-  in your options settings defined in the keyname
-  parameter}
+\item{key}{API key. If left NULL, function looks for key in your options settings
+defined in the keyname parameter}
 
-  \item{keyname}{Your API key name in your .Rprofile file}
+\item{keyname}{Your API key name in your .Rprofile file}
 
-  \item{callopts}{Curl debugging options passed in to
-  httr::GET}
+\item{callopts}{Curl debugging options passed in to httr::GET}
 }
 \description{
 Lists the people that have access to a Gauge.

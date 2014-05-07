@@ -7,22 +7,18 @@ gs_traffic(id, date = NULL, key = NULL, keyname = "GaugesKey",
   callopts = list())
 }
 \arguments{
-  \item{id}{Your gaug.es id}
+\item{id}{Your gaug.es id}
 
-  \item{date}{Date format YYYY-MM-DD. This works in a weird
-  way. If you give no date, you get the traffic for each
-  day since the beginning of the current month, but if you
-  give a date, you get the traffic for each day for that
-  entire month.}
+\item{date}{Date format YYYY-MM-DD. This works in a weird way. If you give no
+date, you get the traffic for each day since the beginning of the current month,
+but if you give a date, you get the traffic for each day for that entire month.}
 
-  \item{key}{API key. If left NULL, function looks for key
-  in your options settings defined in the keyname
-  parameter}
+\item{key}{API key. If left NULL, function looks for key in your options settings
+defined in the keyname parameter}
 
-  \item{keyname}{Your API key name in your .Rprofile file}
+\item{keyname}{Your API key name in your .Rprofile file}
 
-  \item{callopts}{Curl debugging options passed in to
-  httr::GET}
+\item{callopts}{Curl debugging options passed in to httr::GET}
 }
 \description{
 Traffic on a gauges ID

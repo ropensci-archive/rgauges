@@ -8,23 +8,19 @@ gs_gauge_create(title = "hello_world2", tz = "Eastern Time (US & Canada)",
   verbose = TRUE)
 }
 \arguments{
-  \item{title}{Title of the gauge.}
+\item{title}{Title of the gauge.}
 
-  \item{tz}{The time zone that should be used for all
-  date/time operations. See here
-  \url{http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html}
-  for reference.}
+\item{tz}{The time zone that should be used for all date/time operations. See here
+\url{http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html} for reference.}
 
-  \item{allowed_hosts}{Comma or space separated list of
-  domains to accept tracking data from.}
+\item{allowed_hosts}{Comma or space separated list of domains to accept tracking data from.}
 
-  \item{key}{API key. If left NULL, function looks for key
-  in your options settings defined in the keyname
-  parameter}
+\item{key}{API key. If left NULL, function looks for key in your options settings
+defined in the keyname parameter}
 
-  \item{keyname}{Your API key name in your .Rprofile file}
+\item{keyname}{Your API key name in your .Rprofile file}
 
-  \item{verbose}{Print http status (default) or not}
+\item{verbose}{Print http status (default) or not}
 }
 \value{
 Gives HTTP status and metadata for the new gauge.

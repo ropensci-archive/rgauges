@@ -6,16 +6,14 @@
 gs_gauge_detail(id, key = NULL, keyname = "GaugesKey", callopts = list())
 }
 \arguments{
-  \item{id}{id of the gauge}
+\item{id}{id of the gauge}
 
-  \item{key}{API key. If left NULL, function looks for key
-  in your options settings defined in the keyname
-  parameter}
+\item{key}{API key. If left NULL, function looks for key in your options settings
+defined in the keyname parameter}
 
-  \item{keyname}{Your API key name in your .Rprofile file}
+\item{keyname}{Your API key name in your .Rprofile file}
 
-  \item{callopts}{Curl debugging options passed in to
-  httr::GET}
+\item{callopts}{Curl debugging options passed in to httr::GET}
 }
 \description{
 Gets details for a gauge.

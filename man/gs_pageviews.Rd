@@ -7,16 +7,15 @@ gs_pageviews(id, fromdate = NULL, todate = NULL, page = NULL,
   keyname = "GaugesKey")
 }
 \arguments{
-  \item{id}{Your gaug.es id}
+\item{id}{Your gaug.es id}
 
-  \item{fromdate}{Date to get data from. Defaults to
-  today.}
+\item{fromdate}{Date to get data from. Defaults to today.}
 
-  \item{todate}{Date to get data to. Defaults to today.}
+\item{todate}{Date to get data to. Defaults to today.}
 
-  \item{page}{page to return}
+\item{page}{page to return}
 
-  \item{keyname}{Your API key name in your .Rprofile file}
+\item{keyname}{Your API key name in your .Rprofile file}
 }
 \description{
 Gets top content for a gauge, paginated.

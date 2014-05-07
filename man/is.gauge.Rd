@@ -6,7 +6,7 @@
 is.gauge(x)
 }
 \arguments{
-  \item{x}{input}
+\item{x}{input}
 }
 \description{
 Check if object is of class gauge

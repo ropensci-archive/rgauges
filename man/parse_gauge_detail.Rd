@@ -6,7 +6,7 @@
 parse_gauge_detail(out)
 }
 \arguments{
-  \item{out}{Input from a gauge detail call.}
+\item{out}{Input from a gauge detail call.}
 }
 \description{
 Parse guage detail

@@ -9,10 +9,9 @@ vis_gauge(...)
 \method{vis_gauge}{default}(x, ...)
 }
 \arguments{
-  \item{x}{Input, see examples}
+\item{x}{Input, see examples}
 
-  \item{...}{Additional parameters passed on to
-  vis_gauge.default, not currenlty used}
+\item{...}{Additional parameters passed on to vis_gauge.default, not currenlty used}
 }
 \description{
 Plot a class of gauge
