@@ -35,8 +35,8 @@ gs_locations <- function(id, date=NULL, key=NULL, keyname='GaugesKey', callopts=
                stringsAsFactors=FALSE)
   )
   tempdf <- do.call(rbind.fill, temp)
-  names(tempdf)[4:6] <- c('region_title','region_views','region_key')
-  tempdf <- tempdf[,c('title','key','views','region_title','region_key','region_views')]
+  names(tempdf)[4:6] <- c('region_title','region_views','views_state')
+  tempdf <- tempdf[,c('title','key','views','region_title','views_state','region_views')]
   meta <- out[!names(out) %in% "locations"]
   return( list(metadata = meta, data=tempdf) )
 }
