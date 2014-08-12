@@ -2,6 +2,7 @@ rgauges
 =======
 
 [![Build Status](https://api.travis-ci.org/ropensci/rgauges.png)](https://travis-ci.org/ropensci/rgauges)
+[![Build status](https://ci.appveyor.com/api/projects/status/kwa6dn15seh06gp4/branch/master)](https://ci.appveyor.com/project/sckott/rgauges/branch/master)
 
 `rgauges` is an R wrapper to the gaug.es API for website analytics.
 
@@ -129,7 +130,7 @@ $screen_width
 
 #### Visualize traffic data
 
-You'll need to load ggplot2 
+You'll need to load ggplot2
 
 ```coffee
 library(ggplot2)
