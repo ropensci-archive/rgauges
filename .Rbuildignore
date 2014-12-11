@@ -6,5 +6,4 @@ man-roxygen
 ^\.Rproj\.user$
 CONTRIBUTING.md
 inst/ignore
-tests
 ^appveyor\.yml$
