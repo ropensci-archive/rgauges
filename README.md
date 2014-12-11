@@ -142,4 +142,4 @@ vis_gauge(out)
 
 ------
 
-[![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![image](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
