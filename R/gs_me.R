@@ -15,9 +15,7 @@ gs_me <- function(key=NULL, keyname='GaugesKey', ...)
 {
   if(is.null(key))
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
-  tt <- GET(paste0(gsbase(), "/me"), add_headers('X-Gauges-Token' = key), ...)
-  stop_for_status(tt)
-  content(tt)
+  gs_GET(paste0(gsbase(), "/me"), key, args, ...)
 }
 
 #' Updates and returns your information with the updates applied.

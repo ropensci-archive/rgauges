@@ -36,7 +36,7 @@ gs_ref(id='4efd83a6f5a1f5158a000004')
 
 # Get list of gauge's, then pass in one of the ids
 out <- gs_gauge_list()
-gs_ref(id=out$brief[12,1])
+gs_ref(id=out$brief[13,1])
 
 library("httr")
 gs_ref(id='4efd83a6f5a1f5158a000004', config=verbose())

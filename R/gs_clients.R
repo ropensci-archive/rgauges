@@ -18,8 +18,5 @@ gs_clients <- function(key=NULL, keyname='GaugesKey', ...)
 {
   if(is.null(key))
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
-  tt <- GET(paste0(gsbase(), '/clients'), add_headers('X-Gauges-Token' = key), ...)
-  stop_for_status(tt)
-  out <- content(tt)
-  return( out )
+  gs_GET(paste0(gsbase(), '/clients'), key, args, ...)
 }

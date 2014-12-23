@@ -2,6 +2,7 @@
 #'
 #' @export
 #' @import httr data.table
+#' @importFrom jsonlite fromJSON
 #' @importFrom plyr compact rbind.fill
 #' @importFrom lubridate today
 #'

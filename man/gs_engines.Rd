@@ -35,12 +35,8 @@ gs_engines(id='4efd83a6f5a1f5158a000004')
 
 # or get a gauge id using X
 out <- gs_gauge_list()
-gs_engines(id=out$brief[1,'id'])
-gs_engines(id=out$brief[1,'id'], date="2013-11-01")
-
-# Get list of gauge's, then pass in one of the ids
-out <- gs_gauge_list()
-gs_engines(id=out$brief[1,'id'])
+gs_engines(id=out$brief[13,'id'])
+gs_engines(id=out$brief[13,'id'], date="2014-11-01")
 }
 }
 

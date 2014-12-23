@@ -9,12 +9,8 @@
 #'
 #' # or get a gauge id using X
 #' out <- gs_gauge_list()
-#' gs_engines(id=out$brief[1,'id'])
-#' gs_engines(id=out$brief[1,'id'], date="2013-11-01")
-#'
-#' # Get list of gauge's, then pass in one of the ids
-#' out <- gs_gauge_list()
-#' gs_engines(id=out$brief[1,'id'])
+#' gs_engines(id=out$brief[13,'id'])
+#' gs_engines(id=out$brief[13,'id'], date="2014-11-01")
 #' }
 
 gs_engines <- function(id, date=NULL, key=NULL, keyname='GaugesKey', ...)
@@ -23,9 +19,7 @@ gs_engines <- function(id, date=NULL, key=NULL, keyname='GaugesKey', ...)
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- sprintf('%s/gauges/%s/engines', gsbase(), id)
   args <- compact(list(date=date))
-  tt <- GET(url=url, query=args, add_headers('X-Gauges-Token' = key), ...)
-  stop_for_status(tt)
-  out <- content(tt)
+  out <- gs_GET(url, key, args, ...)
   temp <- do.call(rbind.fill, lapply(out$engines, function(x) data.frame(x,stringsAsFactors=FALSE)))
   temp <- temp[,c("key","title","views")]
   return( temp )

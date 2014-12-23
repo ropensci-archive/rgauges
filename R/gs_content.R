@@ -12,7 +12,7 @@
 #'
 #' # Get list of gauge's, then pass in one of the ids
 #' out <- gs_gauge_list()
-#' gs_content(id=out$brief[1,'id'])
+#' gs_content(id=out$brief[13,'id'])
 #' }
 
 gs_content <- function(id, date=NULL, page=NULL, key=NULL, keyname='GaugesKey', ...)
@@ -21,9 +21,7 @@ gs_content <- function(id, date=NULL, page=NULL, key=NULL, keyname='GaugesKey', 
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- sprintf('%s/gauges/%s/content', gsbase(), id)
   args <- compact(list(date=date, page=page))
-  tt <- GET(url=url, query=args, add_headers('X-Gauges-Token' = key), ...)
-  stop_for_status(tt)
-  out <- content(tt)
+  out <- gs_GET(url, key, args, ...)
   dat <- do.call(rbind.fill, lapply(out$content, function(x) data.frame(x,stringsAsFactors=FALSE)))
   meta <- out[!names(out) %in% "content"]
   return( list(metadata = meta, data=dat) )

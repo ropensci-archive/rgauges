@@ -38,7 +38,7 @@ gs_content(id='4efd83a6f5a1f5158a000004', date="2013-11-01")
 
 # Get list of gauge's, then pass in one of the ids
 out <- gs_gauge_list()
-gs_content(id=out$brief[1,'id'])
+gs_content(id=out$brief[13,'id'])
 }
 }
 
