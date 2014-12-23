@@ -1,9 +1,7 @@
 #' Gets search terms for a gauge, paginated.
 #'
-#' @template all
-#' @import httr
-#' @importFrom plyr compact rbind.fill
 #' @export
+#' @template all
 #' @inheritParams gs_ref
 #' @param ... Curl debugging options passed in to \code{\link[httr]{GET}}
 #' @examples \dontrun{
@@ -18,7 +16,7 @@ gs_terms <- function(id, date=NULL, page=NULL, key=NULL, keyname='GaugesKey', ..
 {
   if(is.null(key))
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
-  url <- paste0('https://secure.gaug.es/gauges/', id, '/terms')
+  url <- paste0(gsbase(), '/gauges/', id, '/terms')
   args <- compact(list(date=date, page=page))
   tt <- GET(url=url, query=args, config=c(add_headers('X-Gauges-Token' = key), ...))
   stop_for_status(tt)

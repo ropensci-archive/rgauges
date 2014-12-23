@@ -1,9 +1,7 @@
 #' Lists the browser engines and visits to them for a single date.
 #'
-#' @import httr
 #' @export
 #' @template all
-#' @importFrom plyr rbind.fill compact
 #' @inheritParams gs_traffic
 #' @param ... Curl debugging options passed in to \code{\link[httr]{GET}}
 #' @examples \dontrun{
@@ -23,7 +21,7 @@ gs_engines <- function(id, date=NULL, key=NULL, keyname='GaugesKey', ...)
 {
   if(is.null(key))
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
-  url <- sprintf('https://secure.gaug.es/gauges/%s/engines', id)
+  url <- sprintf('%s/gauges/%s/engines', gsbase(), id)
   args <- compact(list(date=date))
   tt <- GET(url=url, query=args, config=c(add_headers('X-Gauges-Token' = key), ...))
   stop_for_status(tt)

@@ -1,9 +1,7 @@
 #' Traffic on a gauges ID
 #'
-#' @template all
-#' @import httr
-#' @importFrom plyr rbind.fill
 #' @export
+#' @template all
 #' @param id Your gaug.es id
 #' @param date Date format YYYY-MM-DD. This works in a weird way. If you give no
 #'    date, you get the traffic for each day since the beginning of the current month,
@@ -21,7 +19,7 @@ gs_traffic <- function(id, date=NULL, key=NULL, keyname='GaugesKey', ...)
 {
   if(is.null(key))
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
-  url <- sprintf('https://secure.gaug.es/gauges/%s/traffic', id)
+  url <- sprintf('%s/gauges/%s/traffic', gsbase(), id)
   args <- compact(list(date=date))
   tt <- GET(url=url, query=args, config=c(add_headers('X-Gauges-Token' = key), ...))
   stop_for_status(tt)

@@ -1,6 +1,5 @@
 #' Gets top content for a gauge, paginated.
 #'
-#' @import httr
 #' @export
 #' @template all
 #' @importFrom plyr compact rbind.fill
@@ -20,7 +19,7 @@ gs_content <- function(id, date=NULL, page=NULL, key=NULL, keyname='GaugesKey', 
 {
   if(is.null(key))
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
-  url <- sprintf('https://secure.gaug.es/gauges/%s/content', id)
+  url <- sprintf('%s/gauges/%s/content', gsbase(), id)
   args <- compact(list(date=date, page=page))
   tt <- GET(url=url, query=args, config=c(add_headers('X-Gauges-Token' = key), ...))
   stop_for_status(tt)

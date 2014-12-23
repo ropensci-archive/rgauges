@@ -15,8 +15,7 @@ gs_me <- function(key=NULL, keyname='GaugesKey', ...)
 {
   if(is.null(key))
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
-  url <- 'https://secure.gaug.es/me'
-  tt <- GET(url=url, config=c(add_headers('X-Gauges-Token' = key), ...))
+  tt <- GET(paste0(gsbase(), "/me"), config=c(add_headers('X-Gauges-Token' = key), ...))
   stop_for_status(tt)
   content(tt)
 }

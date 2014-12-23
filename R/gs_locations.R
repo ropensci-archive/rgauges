@@ -1,9 +1,7 @@
 #' Information on locations
 #'
-#' @import httr
 #' @export
 #' @template all
-#' @importFrom plyr compact rbind.fill
 #' @inheritParams gs_traffic
 #' @param ... Curl debugging options passed in to \code{\link[httr]{GET}}
 #' @examples \dontrun{
@@ -16,7 +14,7 @@ gs_locations <- function(id, date=NULL, key=NULL, keyname='GaugesKey', ...)
 {
   if(is.null(key))
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
-  url <- sprintf('https://secure.gaug.es/gauges/%s/locations', id)
+  url <- sprintf('%s/gauges/%s/locations', gsbase(), id)
   args <- compact(list(date=date))
   tt <- GET(url=url, query=args, config=c(add_headers('X-Gauges-Token' = key), ...))
   stop_for_status(tt)

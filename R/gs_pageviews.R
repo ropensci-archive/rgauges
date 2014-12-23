@@ -1,9 +1,11 @@
 #' Gets top content for a gauge, paginated.
-#' 
-#' @template all
-#' @import httr data.table
-#' @importFrom lubridate today
+#'
 #' @export
+#' @import httr data.table
+#' @importFrom plyr compact rbind.fill
+#' @importFrom lubridate today
+#'
+#' @template all
 #' @param id Your gaug.es id
 #' @param fromdate Date to get data from. Defaults to today.
 #' @param todate Date to get data to. Defaults to today.
@@ -21,13 +23,13 @@ gs_pageviews <- function(id, fromdate = NULL, todate = NULL, page=NULL,
     fromdate <- today()
   if(is.null(todate))
     todate <- today()
-  
+
   # coerce to dates
   fromdate <- as.Date(fromdate)
   todate <- as.Date(todate)
   datestoget <- as.character(seq.Date(fromdate, todate, by="day"))
-  
-  getcontents <- function(x){  
+
+  getcontents <- function(x){
     temp <- gs_content(id=id, date=x, page=page, keyname=keyname)$data
     if(is.null(temp)){
       data.frame(date=x, title = "none", views = NA, stringsAsFactors = FALSE)
@@ -35,7 +37,7 @@ gs_pageviews <- function(id, fromdate = NULL, todate = NULL, page=NULL,
       data.frame(date=x, temp[,c('title','views')], stringsAsFactors = FALSE)
     }
   }
-  
+
   out <- lapply(datestoget, getcontents)
   out <- do.call(rbind.fill, out)
   dt <- data.table(out)

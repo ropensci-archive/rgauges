@@ -27,6 +27,9 @@ Note that these examples only work if you provide your
 \dontrun{
 # Default key name is GaugesKey
 gs_clients()
+
+library("httr")
+gs_clients(config=verbose())
 }
 }
 
