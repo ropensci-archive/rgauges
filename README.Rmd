@@ -1,7 +1,15 @@
 rgauges
 =======
 
-
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE, 
+  message = FALSE,
+  fig.path = "inst/assets/"
+)
+```
 
 [![Build Status](https://api.travis-ci.org/ropensci/rgauges.png)](https://travis-ci.org/ropensci/rgauges)
 [![Build status](https://ci.appveyor.com/api/projects/status/vbir624l5erfhe0a/branch/master)](https://ci.appveyor.com/project/sckott/rgauges/branch/master)
@@ -22,148 +30,54 @@ Get your own API key in your Gaug.es 'My Account' page and put in your .Rprofile
 
 Stable-r version from CRAN
 
-
-```r
+```{r eval=FALSE}
 install.packages("rgauges")
 ```
 
 Development version from Github
 
-
-```r
+```{r eval=FALSE}
 install.packages("devtools")
 devtools::install_github("ropensci/rgauges")
 ```
 
 Load the package
 
-
-```r
+```{r}
 library("rgauges")
 ```
 
 ## Your info
 
-
-```r
+```{r}
 gs_me()
-#> $user
-#> $user$id
-#> [1] "4eddbafb613f5d5139000001"
-#> 
-#> $user$email
-#> [1] "myrmecocystus@gmail.com"
-#> 
-#> $user$name
-#> [1] "Scott Chamberlain"
-#> 
-#> $user$first_name
-#> [1] "Scott"
-#> 
-#> $user$last_name
-#> [1] "Chamberlain"
-#> 
-#> $user$urls
-#> $user$urls$self
-#> [1] "https://secure.gaug.es/me"
-#> 
-#> $user$urls$gauges
-#> [1] "https://secure.gaug.es/gauges"
-#> 
-#> $user$urls$clients
-#> [1] "https://secure.gaug.es/clients"
 ```
 
 ### Traffic
 
-
-```r
+```{r eval=FALSE}
 gs_traffic(id='4efd83a6f5a1f5158a000004')
 ```
 
-
-```
-#> [[1]]
-#> [[1]]$date
-#> [1] "2014-12-01"
-#> 
-#> [[1]]$views
-#> [1] 22
-#> 
-#> [[1]]$people
-#> [1] 15
-#> 
-#> 
-#> [[2]]
-#> [[2]]$date
-#> [1] "2014-12-02"
-#> 
-#> [[2]]$views
-#> [1] 81
-#> 
-#> [[2]]$people
-#> [1] 63
-#> 
-#> 
-#> [[3]]
-#> [[3]]$date
-#> [1] "2014-12-03"
-#> 
-#> [[3]]$views
-#> [1] 137
-#> 
-#> [[3]]$people
-#> [1] 91
+```{r echo=FALSE}
+gs_traffic(id='4efd83a6f5a1f5158a000004')$metadata$data$month$traffic[1:3]
 ```
 
 ## Screen/browser information
 
-
-```r
+```{r}
 gs_reso(id='4efd83a6f5a1f5158a000004')
-#> $browser_height
-#>   title views
-#> 1   600   278
-#> 2   480   144
-#> 3   768   106
-#> 4   900    81
-#> 5  1024    43
-#> 
-#> $browser_width
-#>   title views
-#> 1  1280   165
-#> 2   320   135
-#> 3  1024   118
-#> 4  1600   105
-#> 5  1440    66
-#> 6   800    41
-#> 7   480    17
-#> 8  2000     5
-#> 
-#> $screen_width
-#>   title views
-#> 1  1280   259
-#> 2  1600   150
-#> 3  1440    71
-#> 4   320    69
-#> 5  1024    50
-#> 6   480    29
-#> 7  2000    23
-#> 8   800     1
 ```
 
 ## Visualize traffic data
 
 You'll need to load ggplot2
 
-
-```r
+```{r}
 library("ggplot2")
 out <- gs_gauge_detail(id='4efd83a6f5a1f5158a000004')
 invisible(vis_gauge(out))
 ```
-
-![plot of chunk unnamed-chunk-9](inst/assets/unnamed-chunk-9-1.png) 
 
 ## Meta
 
