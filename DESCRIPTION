@@ -25,4 +25,5 @@ Imports:
     data.table
 Suggests:
     roxygen2,
-    knitr
+    knitr,
+    testthat
