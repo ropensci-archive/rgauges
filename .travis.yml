@@ -8,3 +8,6 @@ before_script:
 notifications:
   slack:
     secure: Tr0t3RqcmLIzl5Id9+/DrN9nuW1qMBnQpJVZMH3+uRVC8Bt70fRdi1Kpt8vnO7UVGu6cNq5KqxD64i3lxa4B5VzKtFWDhomCw9yeFUmSPnedCCWEHi6TyJP5/8LgUnj/HJlqP+XYBTQ/HL0x+hL5Z8QmUn1cyd6SiyzGJOBIIQU=
+env:
+  global:
+    secure: TXfgyD+0Ih6dqoDqAfTsoRp7SLzbOgQNVyFDj9CKuWokfdgRfrSaEqgSbVI/4gIxEUXPh8CQAj96TFnbzkgGcnpXWODL3+2/6RCz2BQmXFNPDCZrQSi6eD1xVWKZEUYLfONdlz4ld5hvBJ4ZWp9f2hAc2L5L2fVoBIGz3ZbWjUQ=
