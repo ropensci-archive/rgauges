@@ -20,7 +20,7 @@ gs_tech <- function(id, date=NULL, key=NULL, keyname='GaugesKey', ...)
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- sprintf('%s/gauges/%s/technology', gsbase(), id)
   args <- compact(list(date=date))
-  tt <- GET(url=url, query=args, config=c(add_headers('X-Gauges-Token' = key), ...))
+  tt <- GET(url=url, query=args, add_headers('X-Gauges-Token' = key), ...)
   stop_for_status(tt)
   out <- content(tt)
   brows <-
