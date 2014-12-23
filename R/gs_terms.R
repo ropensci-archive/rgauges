@@ -18,7 +18,7 @@ gs_terms <- function(id, date=NULL, page=NULL, key=NULL, keyname='GaugesKey', ..
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- paste0(gsbase(), '/gauges/', id, '/terms')
   args <- compact(list(date=date, page=page))
-  out <- gs_GET(url, key, args, ...)
+  out <- gs_GET(url, key, keyname, args, ...)
   dat <- do.call(rbind.fill, lapply(out$terms, function(x) data.frame(x,stringsAsFactors=FALSE)))
   meta <- out[!names(out) %in% "terms"]
   return( list(metadata=meta, data=dat) )

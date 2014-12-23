@@ -19,7 +19,7 @@ gs_engines <- function(id, date=NULL, key=NULL, keyname='GaugesKey', ...)
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- sprintf('%s/gauges/%s/engines', gsbase(), id)
   args <- compact(list(date=date))
-  out <- gs_GET(url, key, args, ...)
+  out <- gs_GET(url, key, keyname, args, ...)
   temp <- do.call(rbind.fill, lapply(out$engines, function(x) data.frame(x,stringsAsFactors=FALSE)))
   temp <- temp[,c("key","title","views")]
   return( temp )

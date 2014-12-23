@@ -17,11 +17,9 @@
 
 gs_traffic <- function(id, date=NULL, key=NULL, keyname='GaugesKey', ...)
 {
-  if(is.null(key))
-    key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- sprintf('%s/gauges/%s/traffic', gsbase(), id)
   args <- compact(list(date=date))
-  out <- gs_GET(url, key, args, ...)
+  out <- gs_GET(url, key, keyname, args, ...)
   dat <- do.call(rbind.fill, lapply(out$traffic, function(x) data.frame(x, stringsAsFactors=FALSE)))
   meta <- out[!names(out) %in% "traffic"]
   list(metadata=meta, data=dat)

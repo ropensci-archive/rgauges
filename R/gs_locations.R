@@ -16,7 +16,7 @@ gs_locations <- function(id, date=NULL, key=NULL, keyname='GaugesKey', ...)
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- sprintf('%s/gauges/%s/locations', gsbase(), id)
   args <- compact(list(date=date))
-  out <- gs_GET(url, key, args, ...)
+  out <- gs_GET(url, key, keyname,  args, ...)
 
   foo <- function(z){
     if(length(z) == 0){ data.frame(title=NA,views=NA,key=NA) } else {

@@ -20,7 +20,7 @@ gs_tech <- function(id, date=NULL, key=NULL, keyname='GaugesKey', ...)
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- sprintf('%s/gauges/%s/technology', gsbase(), id)
   args <- compact(list(date=date))
-  out <- gs_GET(url, key, args, ...)
+  out <- gs_GET(url, key, keyname, args, ...)
   brows <-
     do.call(rbind.fill,
     lapply(out$browsers, function(x) if(length(x$versions)==0){

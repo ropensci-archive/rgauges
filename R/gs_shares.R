@@ -20,5 +20,5 @@ gs_shares <- function(id, key=NULL, keyname='GaugesKey', ...)
   if(is.null(key))
     key <- getOption(keyname, stop("you need an API key for Gaug.es data"))
   url <- sprintf('%s/gauges/%s/shares', gsbase(), id)
-  gs_GET(url, key, args, ...)
+  gs_GET(url, key, keyname, args, ...)
 }
