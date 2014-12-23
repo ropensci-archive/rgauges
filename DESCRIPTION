@@ -18,6 +18,7 @@ Imports:
     lubridate,
     plyr,
     httr,
+    jsonlite,
     reshape2,
     gridExtra,
     scales,
