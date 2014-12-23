@@ -7,3 +7,4 @@ man-roxygen
 CONTRIBUTING.md
 inst/ignore
 ^appveyor\.yml$
+README.Rmd
