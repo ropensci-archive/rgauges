@@ -2,8 +2,8 @@ context("testing gs_terms")
 
 key <- Sys.getenv("GaugesKey")
 
-a <- gs_terms(id='4efd83a6f5a1f5158a000004', key=key)
-b <- gs_terms(id='4efd83a6f5a1f5158a000004', page = 2, key=key)
+a <- gs_terms(id='4efd83a6f5a1f5158a000004', date="2014-12-01", key=key)
+b <- gs_terms(id='4efd83a6f5a1f5158a000004', date="2014-12-01", page = 2, key=key)
 
 test_that("gs_terms returns correct class", {
   expect_is(a, "list")

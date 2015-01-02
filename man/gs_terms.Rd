@@ -32,11 +32,11 @@ Note that these examples only work if you provide your
 }
 \examples{
 \dontrun{
-gs_terms(id='4efd83a6f5a1f5158a000004')
+gs_terms(id='4efd83a6f5a1f5158a000004', date="2014-12-01")
 
 # Get list of gauge's, then pass in one of the ids
 out <- gs_gauge_list()
-gs_terms(id=out$brief[1,'id'])
+gs_terms(id=out$brief[1,'id'], date="2014-11-01")
 }
 }
 

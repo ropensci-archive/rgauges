@@ -5,11 +5,11 @@
 #' @inheritParams gs_ref
 #' @param ... Curl debugging options passed in to \code{\link[httr]{GET}}
 #' @examples \dontrun{
-#' gs_terms(id='4efd83a6f5a1f5158a000004')
+#' gs_terms(id='4efd83a6f5a1f5158a000004', date="2014-12-01")
 #'
 #' # Get list of gauge's, then pass in one of the ids
 #' out <- gs_gauge_list()
-#' gs_terms(id=out$brief[1,'id'])
+#' gs_terms(id=out$brief[1,'id'], date="2014-11-01")
 #' }
 
 gs_terms <- function(id, date=NULL, page=NULL, key=NULL, keyname='GaugesKey', ...)
