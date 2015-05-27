@@ -4,7 +4,6 @@ rgauges
 
 
 [![Build Status](https://api.travis-ci.org/ropensci/rgauges.png)](https://travis-ci.org/ropensci/rgauges)
-[![Build status](https://ci.appveyor.com/api/projects/status/vbir624l5erfhe0a/branch/master)](https://ci.appveyor.com/project/sckott/rgauges/branch/master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/rgauges?color=2ECC71)](https://github.com/metacran/cranlogs.app)
 [![cran version](http://www.r-pkg.org/badges/version/rgauges)](http://cran.rstudio.com/web/packages/rgauges)
 
