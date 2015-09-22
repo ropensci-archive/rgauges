@@ -11,9 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-[![Build Status](https://api.travis-ci.org/ropensci/rgauges.png)](https://travis-ci.org/ropensci/rgauges)
-[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/rgauges?color=2ECC71)](https://github.com/metacran/cranlogs.app)
-[![cran version](http://www.r-pkg.org/badges/version/rgauges)](http://cran.rstudio.com/web/packages/rgauges)
+__NOTE: This package has been ORPHANED on CRAN - you can still install it from here and from CRAN manually, but we're no longer supporting this package__
 
 `rgauges` is an R wrapper to the gaug.es API for website analytics.
 
